@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3g8vel5hctgm"]
+
+[ext_resource type="Texture2D" uid="uid://dax4ppuutc6q1" path="res://assets/textures/crosshair/crosshair_grey.png" id="1_32jxi"]
+[ext_resource type="Script" path="res://assets/scenes/ui/crosshair.gd" id="2_22jjf"]
+
+[node name="Crosshair" type="TextureRect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_32jxi")
+ignore_texture_size = true
+script = ExtResource("2_22jjf")

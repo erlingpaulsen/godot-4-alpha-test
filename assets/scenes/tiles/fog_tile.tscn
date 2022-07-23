@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bhxv55tuay8u6"]
+
+[ext_resource type="Material" uid="uid://bnsjxxv11gxof" path="res://assets/materials/fog/fog_animated.tres" id="1_g1v5p"]
+
+[node name="FogTile" type="FogVolume"]
+extents = Vector3(4, 2, 4)
+material = ExtResource("1_g1v5p")

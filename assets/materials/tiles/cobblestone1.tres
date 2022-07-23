@@ -1,0 +1,75 @@
+[gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://bcyicpdoq5ts6"]
+
+[ext_resource type="Shader" path="res://assets/shaders/stone_tile.gdshader" id="1_pwky1"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_a8lh5"]
+noise_type = 2
+frequency = 0.002
+fractal_octaves = 4
+fractal_lacunarity = 2.3
+fractal_gain = 0.32
+cellular_distance_function = 1
+cellular_jitter = 0.7
+cellular_return_type = 6
+domain_warp_enabled = true
+domain_warp_amplitude = 20.0
+domain_warp_frequency = 0.03
+domain_warp_fractal_type = 2
+domain_warp_fractal_octaves = 4
+domain_warp_fractal_lacunarity = 2.3
+domain_warp_fractal_gain = 0.7
+
+[sub_resource type="NoiseTexture" id="NoiseTexture_roy47"]
+width = 4096
+height = 4096
+invert = true
+seamless = true
+noise = SubResource("FastNoiseLite_a8lh5")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_adh4t"]
+noise_type = 2
+frequency = 0.002
+fractal_octaves = 4
+fractal_lacunarity = 2.3
+fractal_gain = 0.32
+cellular_distance_function = 1
+cellular_jitter = 0.7
+cellular_return_type = 6
+domain_warp_enabled = true
+domain_warp_amplitude = 20.0
+domain_warp_frequency = 0.03
+domain_warp_fractal_octaves = 4
+domain_warp_fractal_lacunarity = 2.3
+domain_warp_fractal_gain = 0.7
+
+[sub_resource type="NoiseTexture" id="NoiseTexture_ke0ww"]
+width = 4096
+height = 4096
+invert = true
+seamless = true
+as_normal_map = true
+bump_strength = 32.0
+noise = SubResource("FastNoiseLite_adh4t")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_pwky1")
+shader_param/albedo_noise_contrast = 0.016
+shader_param/ambient_occlusion_strength = 1.0
+shader_param/depth_scale = 0.002
+shader_param/height_edge_falloff = 0.1
+shader_param/height_edge_falloff_curve = 0.1
+shader_param/height_edge_thickness = 0.5
+shader_param/height_offset = 0.0
+shader_param/height_scale = 0.07
+shader_param/morter_color = Color(0.223529, 0.172549, 0.12549, 1)
+shader_param/morter_placement = 0.571
+shader_param/morter_thickness = 0.487
+shader_param/moss_color = Color(0.0784314, 0.12549, 0, 1)
+shader_param/noise = SubResource("NoiseTexture_roy47")
+shader_param/normal_map = SubResource("NoiseTexture_ke0ww")
+shader_param/normal_map_depth = 0.796
+shader_param/stone_color = Color(0.239216, 0.239216, 0.239216, 1)
+shader_param/stone_reflection_start = 0.205
+shader_param/stone_reflection_strength = 0.241
+shader_param/tile_size = 4

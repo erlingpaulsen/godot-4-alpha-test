@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://b6n4alws48y0d"]
+
+[ext_resource type="Shader" path="res://assets/shaders/item_shine.gdshader" id="1_ijasl"]
+[ext_resource type="Material" uid="uid://cfof6r4hob835" path="res://assets/materials/effects/item_outline.tres" id="1_wpc02"]
+
+[resource]
+render_priority = 0
+next_pass = ExtResource("1_wpc02")
+shader = ExtResource("1_ijasl")
+shader_param/cycle_interval = 5.0
+shader_param/shine_color = Color(1, 1, 0.8, 0.6)
+shader_param/shine_speed = 0.5
+shader_param/shine_width = 1.0

@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://c0es026gdnih8"]
+
+[ext_resource type="Script" path="res://assets/scenes/ui/debug_overlay.gd" id="1_a5jtq"]
+[ext_resource type="Script" path="res://assets/scenes/ui/performance_panel.gd" id="2_bagre"]
+[ext_resource type="Script" path="res://assets/scenes/ui/player_panel.gd" id="3_ylu87"]
+[ext_resource type="Script" path="res://assets/scenes/ui/event_panel.gd" id="4_wb5la"]
+
+[node name="DebugOverlay" type="VBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_a5jtq")
+
+[node name="PerformancePanel" type="PanelContainer" parent="."]
+offset_right = 40.0
+script = ExtResource("2_bagre")
+
+[node name="PlayerPanel" type="PanelContainer" parent="."]
+offset_top = 4.0
+offset_right = 40.0
+offset_bottom = 4.0
+script = ExtResource("3_ylu87")
+
+[node name="EventPanel" type="PanelContainer" parent="."]
+offset_top = 8.0
+offset_right = 40.0
+offset_bottom = 8.0
+script = ExtResource("4_wb5la")

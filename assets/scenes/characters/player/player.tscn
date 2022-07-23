@@ -1,0 +1,117 @@
+[gd_scene load_steps=16 format=3 uid="uid://di05dan0patm0"]
+
+[ext_resource type="Script" path="res://assets/scenes/characters/player/player.gd" id="1_tarvg"]
+[ext_resource type="Script" path="res://assets/scenes/state_machine/state_machine.gd" id="2_laonq"]
+[ext_resource type="Script" path="res://assets/scenes/characters/player/player_state_idle.gd" id="3_n5pqv"]
+[ext_resource type="Script" path="res://assets/scenes/characters/player/player_state_walking.gd" id="4_wey0r"]
+[ext_resource type="Script" path="res://assets/scenes/characters/player/jumping.gd" id="5_a8psu"]
+[ext_resource type="Script" path="res://assets/scenes/characters/player/player_state_running.gd" id="6_dhb3f"]
+[ext_resource type="Script" path="res://assets/scenes/characters/player/player_state_sneaking.gd" id="7_pamew"]
+[ext_resource type="AudioStream" uid="uid://di454gpddv0d5" path="res://footsteps1.mp3" id="8_1gjjp"]
+[ext_resource type="PackedScene" uid="uid://dq5b0qjq0kri5" path="res://assets/scenes/objects/torch/torch.tscn" id="9_h5gij"]
+
+[sub_resource type="CapsuleShape3D" id="4"]
+radius = 0.342134
+height = 1.77538
+
+[sub_resource type="BoxShape3D" id="5"]
+size = Vector3(1, 0.4, 1)
+
+[sub_resource type="Animation" id="Animation_yormg"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_qrkmn"]
+resource_name = "sneak_start"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RotationHelper:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.45, 1.05]
+}
+
+[sub_resource type="Animation" id="Animation_ahr7r"]
+resource_name = "sneak_stop"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RotationHelper:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.05, 1.45]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xyi2v"]
+_data = {
+"RESET": SubResource("Animation_yormg"),
+"sneak_start": SubResource("Animation_qrkmn"),
+"sneak_stop": SubResource("Animation_ahr7r")
+}
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_tarvg")
+metadata/_edit_group_ = true
+
+[node name="BodyCollisionShape" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.817772, 0)
+shape = SubResource("4")
+
+[node name="FeetCollisionShape" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.125642, 0)
+shape = SubResource("5")
+
+[node name="RotationHelper" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.45, 0)
+
+[node name="Camera" type="Camera3D" parent="RotationHelper"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.15, 0.1)
+far = 800.0
+
+[node name="RayCast3D" type="RayCast3D" parent="RotationHelper/Camera"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.46819e-08, 0, -0.282328)
+target_position = Vector3(0, 0, -1)
+
+[node name="MovementStateMachine" type="Node" parent="."]
+script = ExtResource("2_laonq")
+
+[node name="Idle" type="Node" parent="MovementStateMachine"]
+script = ExtResource("3_n5pqv")
+
+[node name="Walking" type="Node" parent="MovementStateMachine"]
+script = ExtResource("4_wey0r")
+
+[node name="Jumping" type="Node" parent="MovementStateMachine"]
+script = ExtResource("5_a8psu")
+
+[node name="Running" type="Node" parent="MovementStateMachine"]
+script = ExtResource("6_dhb3f")
+
+[node name="Sneaking" type="Node" parent="MovementStateMachine"]
+script = ExtResource("7_pamew")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_xyi2v")
+}
+
+[node name="Audio" type="Node3D" parent="."]
+
+[node name="Footsteps" type="AudioStreamPlayer3D" parent="Audio"]
+stream = ExtResource("8_1gjjp")
+unit_db = -12.0
+pitch_scale = 1.2
+bus = &"Footsteps"
+
+[node name="Torch" parent="." instance=ExtResource("9_h5gij")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.314837, 1.50031, 0.713097)

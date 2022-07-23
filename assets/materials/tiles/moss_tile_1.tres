@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://beth3wugauxe7"]
+
+[ext_resource type="Shader" path="res://assets/shaders/moss_tile.gdshader" id="1_8ppfd"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_8ppfd")

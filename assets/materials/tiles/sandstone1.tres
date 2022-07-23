@@ -1,0 +1,61 @@
+[gd_resource type="ShaderMaterial" load_steps=6 format=3]
+
+[ext_resource type="Shader" path="res://assets/shaders/stone_tile.gdshader" id="1_ti3mt"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_t0b5h"]
+noise_type = 2
+frequency = 0.008
+fractal_octaves = 8
+fractal_gain = 0.3
+cellular_distance_function = 1
+cellular_jitter = 0.7
+cellular_return_type = 6
+domain_warp_enabled = true
+domain_warp_frequency = 0.01
+domain_warp_fractal_octaves = 8
+domain_warp_fractal_lacunarity = 2.2
+domain_warp_fractal_gain = 0.7
+
+[sub_resource type="NoiseTexture" id="NoiseTexture_b2iro"]
+width = 1024
+height = 1024
+invert = true
+seamless = true
+noise = SubResource( "FastNoiseLite_t0b5h" )
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_y60th"]
+noise_type = 2
+frequency = 0.008
+fractal_octaves = 8
+fractal_gain = 0.3
+cellular_distance_function = 1
+cellular_jitter = 0.7
+cellular_return_type = 6
+domain_warp_enabled = true
+domain_warp_frequency = 0.01
+domain_warp_fractal_octaves = 8
+domain_warp_fractal_lacunarity = 2.2
+domain_warp_fractal_gain = 0.7
+
+[sub_resource type="NoiseTexture" id="NoiseTexture_4qip3"]
+width = 1024
+height = 1024
+invert = true
+seamless = true
+as_normal_map = true
+bump_strength = 12.0
+noise = SubResource( "FastNoiseLite_y60th" )
+
+[resource]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource( "1_ti3mt" )
+shader_param/color_transition_start = 0.2
+shader_param/color_transition_stop = 0.4
+shader_param/height_offset = 0.05
+shader_param/height_scale = 0.05
+shader_param/morter_color = Color(0.376471, 0.321569, 0.196078, 1)
+shader_param/noise = SubResource( "NoiseTexture_b2iro" )
+shader_param/normalmap = SubResource( "NoiseTexture_4qip3" )
+shader_param/stone_color = Color(0.501961, 0.462745, 0.333333, 1)
+shader_param/tile_size = 4

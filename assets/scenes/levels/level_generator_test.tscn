@@ -1,0 +1,46 @@
+[gd_scene load_steps=14 format=3 uid="uid://cttk34slr2v52"]
+
+[ext_resource type="PackedScene" path="res://assets/scenes/levels/level_generator.tscn" id="1_ebs1h"]
+[ext_resource type="PackedScene" uid="uid://ceg8nimtgqvac" path="res://assets/scenes/tiles/tile_cobblestone_thick.tscn" id="2_11wu7"]
+[ext_resource type="PackedScene" uid="uid://dq5b0qjq0kri5" path="res://assets/scenes/objects/torch/torch.tscn" id="3_v6ih0"]
+[ext_resource type="PackedScene" uid="uid://c3wagnh5ifiay" path="res://assets/scenes/objects/wood_beam/wood_beam.tscn" id="4_0xfuc"]
+[ext_resource type="PackedScene" uid="uid://di05dan0patm0" path="res://assets/scenes/characters/player/player.tscn" id="5_t7r2a"]
+[ext_resource type="Environment" uid="uid://byp5scp3kxapt" path="res://assets/materials/environments/environment1.tres" id="6_jq4gd"]
+[ext_resource type="PackedScene" uid="uid://c0es026gdnih8" path="res://assets/scenes/ui/debug_overlay.tscn" id="7_efmsl"]
+[ext_resource type="Script" path="res://assets/scenes/levels/environment_editor.gd" id="8_cfn4l"]
+[ext_resource type="PackedScene" path="res://assets/scenes/ui/main_menu.tscn" id="8_wyquy"]
+[ext_resource type="PackedScene" uid="uid://b3g8vel5hctgm" path="res://assets/scenes/ui/crosshair.tscn" id="9_u7g0f"]
+[ext_resource type="PackedScene" uid="uid://cxmpqw665hmoh" path="res://assets/materials/effects/item_interact_popup.tscn" id="10_lsh4t"]
+[ext_resource type="PackedScene" uid="uid://bhxv55tuay8u6" path="res://assets/scenes/tiles/fog_tile.tscn" id="11_wdv1f"]
+
+[sub_resource type="CameraEffects" id="CameraEffects_ot7s7"]
+
+[node name="Main" type="Node3D"]
+
+[node name="LevelGenerator" parent="." instance=ExtResource("1_ebs1h")]
+tile_scene = ExtResource("2_11wu7")
+torch_scene = ExtResource("3_v6ih0")
+wood_beam_scene = ExtResource("4_0xfuc")
+fog_tile_scene = ExtResource("11_wdv1f")
+
+[node name="Player" parent="." instance=ExtResource("5_t7r2a")]
+transform = Transform3D(0.927184, 0, -0.374607, 0, 1, 0, 0.374607, 0, 0.927184, 1.3, 0.07, -1.18)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("6_jq4gd")
+camera_effects = SubResource("CameraEffects_ot7s7")
+script = ExtResource("8_cfn4l")
+
+[node name="UI" type="Control" parent="."]
+offset_right = 2560.0
+offset_bottom = 1440.0
+
+[node name="ItemInteractPopup" parent="UI" instance=ExtResource("10_lsh4t")]
+
+[node name="DebugOverlay" parent="UI" instance=ExtResource("7_efmsl")]
+offset_top = -1.0
+offset_bottom = 39.0
+
+[node name="Menu" parent="UI" instance=ExtResource("8_wyquy")]
+
+[node name="Crosshair" parent="UI" instance=ExtResource("9_u7g0f")]

@@ -1,0 +1,39 @@
+[gd_resource type="ShaderMaterial" load_steps=6 format=3]
+
+[ext_resource type="Shader" path="res://assets/shaders/stone_tile.gdshader" id="1_2hmfe"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_q87np"]
+fractal_type = 2
+fractal_octaves = 6
+fractal_gain = 0.3
+domain_warp_enabled = true
+domain_warp_amplitude = 10.0
+
+[sub_resource type="NoiseTexture" id="NoiseTexture_p0mef"]
+seamless = true
+noise = SubResource( "FastNoiseLite_q87np" )
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_q64re"]
+fractal_type = 2
+fractal_octaves = 6
+fractal_gain = 0.3
+domain_warp_enabled = true
+domain_warp_amplitude = 10.0
+
+[sub_resource type="NoiseTexture" id="NoiseTexture_jlw87"]
+seamless = true
+noise = SubResource( "FastNoiseLite_q64re" )
+
+[resource]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource( "1_2hmfe" )
+shader_param/color_transition_start = 0.2
+shader_param/color_transition_stop = 0.6
+shader_param/height_offset = 0.0
+shader_param/height_scale = 0.1
+shader_param/morter_color = Color(0.788235, 0.0588235, 0, 1)
+shader_param/noise = SubResource( "NoiseTexture_p0mef" )
+shader_param/normalmap = SubResource( "NoiseTexture_jlw87" )
+shader_param/stone_color = Color(0.0901961, 0.0117647, 0, 1)
+shader_param/tile_size = 4

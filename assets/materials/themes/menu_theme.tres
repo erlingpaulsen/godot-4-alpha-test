@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://fr4lv70w78u"]
+
+[ext_resource type="FontFile" uid="uid://x8on1v5vbmq6" path="res://assets/fonts/AmaticSC/AmaticSC-Bold.ttf" id="1_2qpkh"]
+
+[resource]
+default_font = ExtResource("1_2qpkh")
+default_font_size = 52

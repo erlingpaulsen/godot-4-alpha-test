@@ -1,0 +1,177 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://assets/scenes/ui/main_menu.gd" id="1_jxn36"]
+
+[node name="Menu" type="PanelContainer"]
+offset_right = 2560.0
+offset_bottom = 1440.0
+script = ExtResource("1_jxn36")
+
+[node name="OuterMarginContainer" type="MarginContainer" parent="."]
+offset_right = 2560.0
+offset_bottom = 1440.0
+theme_override_constants/margin_left = 500
+theme_override_constants/margin_top = 200
+theme_override_constants/margin_right = 500
+theme_override_constants/margin_bottom = 200
+
+[node name="MainMenu" type="VBoxContainer" parent="OuterMarginContainer"]
+offset_left = 500.0
+offset_top = 200.0
+offset_right = 2060.0
+offset_bottom = 1240.0
+
+[node name="ResumeButton" type="Button" parent="OuterMarginContainer/MainMenu"]
+offset_right = 1560.0
+offset_bottom = 257.0
+size_flags_vertical = 3
+text = "Resume"
+
+[node name="ControlsButton" type="Button" parent="OuterMarginContainer/MainMenu"]
+offset_top = 261.0
+offset_right = 1560.0
+offset_bottom = 518.0
+size_flags_vertical = 3
+text = "Controls"
+
+[node name="SettingsButton" type="Button" parent="OuterMarginContainer/MainMenu"]
+offset_top = 522.0
+offset_right = 1560.0
+offset_bottom = 779.0
+size_flags_vertical = 3
+text = "Settings"
+
+[node name="ExitButton" type="Button" parent="OuterMarginContainer/MainMenu"]
+offset_top = 783.0
+offset_right = 1560.0
+offset_bottom = 1040.0
+size_flags_vertical = 3
+text = "Exit"
+
+[node name="ControlsMenu" type="VBoxContainer" parent="OuterMarginContainer"]
+offset_left = 500.0
+offset_top = 200.0
+offset_right = 2060.0
+offset_bottom = 1240.0
+theme_override_constants/separation = 50
+
+[node name="MovementHBoxContainer" type="HBoxContainer" parent="OuterMarginContainer/ControlsMenu"]
+offset_right = 1560.0
+offset_bottom = 131.0
+size_flags_vertical = 3
+theme_override_constants/separation = 50
+
+[node name="MovementLabel" type="Label" parent="OuterMarginContainer/ControlsMenu/MovementHBoxContainer"]
+offset_top = 52.0
+offset_right = 755.0
+offset_bottom = 78.0
+size_flags_horizontal = 3
+text = "Movement"
+horizontal_alignment = 2
+
+[node name="MovementValue" type="Label" parent="OuterMarginContainer/ControlsMenu/MovementHBoxContainer"]
+offset_left = 805.0
+offset_top = 52.0
+offset_right = 1560.0
+offset_bottom = 78.0
+size_flags_horizontal = 3
+text = "W, A, S, D"
+
+[node name="JumpHBoxContainer" type="HBoxContainer" parent="OuterMarginContainer/ControlsMenu"]
+offset_top = 181.0
+offset_right = 1560.0
+offset_bottom = 313.0
+size_flags_vertical = 3
+theme_override_constants/separation = 50
+
+[node name="JumpLabel" type="Label" parent="OuterMarginContainer/ControlsMenu/JumpHBoxContainer"]
+offset_top = 53.0
+offset_right = 755.0
+offset_bottom = 79.0
+size_flags_horizontal = 3
+text = "Jump"
+horizontal_alignment = 2
+
+[node name="JumpValue" type="Label" parent="OuterMarginContainer/ControlsMenu/JumpHBoxContainer"]
+offset_left = 805.0
+offset_top = 53.0
+offset_right = 1560.0
+offset_bottom = 79.0
+size_flags_horizontal = 3
+text = "Space"
+
+[node name="RunHBoxContainer" type="HBoxContainer" parent="OuterMarginContainer/ControlsMenu"]
+offset_top = 363.0
+offset_right = 1560.0
+offset_bottom = 495.0
+size_flags_vertical = 3
+theme_override_constants/separation = 50
+
+[node name="RunLabel" type="Label" parent="OuterMarginContainer/ControlsMenu/RunHBoxContainer"]
+offset_top = 53.0
+offset_right = 755.0
+offset_bottom = 79.0
+size_flags_horizontal = 3
+text = "Run"
+horizontal_alignment = 2
+
+[node name="RunValue" type="Label" parent="OuterMarginContainer/ControlsMenu/RunHBoxContainer"]
+offset_left = 805.0
+offset_top = 53.0
+offset_right = 1560.0
+offset_bottom = 79.0
+size_flags_horizontal = 3
+text = "Shift"
+
+[node name="SneakHBoxContainer" type="HBoxContainer" parent="OuterMarginContainer/ControlsMenu"]
+offset_top = 545.0
+offset_right = 1560.0
+offset_bottom = 676.0
+size_flags_vertical = 3
+theme_override_constants/separation = 50
+
+[node name="SneakLabel" type="Label" parent="OuterMarginContainer/ControlsMenu/SneakHBoxContainer"]
+offset_top = 52.0
+offset_right = 755.0
+offset_bottom = 78.0
+size_flags_horizontal = 3
+text = "Sneak"
+horizontal_alignment = 2
+
+[node name="SneakValue" type="Label" parent="OuterMarginContainer/ControlsMenu/SneakHBoxContainer"]
+offset_left = 805.0
+offset_top = 52.0
+offset_right = 1560.0
+offset_bottom = 78.0
+size_flags_horizontal = 3
+text = "Ctrl"
+
+[node name="DebugHBoxContainer" type="HBoxContainer" parent="OuterMarginContainer/ControlsMenu"]
+offset_top = 726.0
+offset_right = 1560.0
+offset_bottom = 858.0
+size_flags_vertical = 3
+theme_override_constants/separation = 50
+
+[node name="DebugLabel" type="Label" parent="OuterMarginContainer/ControlsMenu/DebugHBoxContainer"]
+offset_top = 53.0
+offset_right = 755.0
+offset_bottom = 79.0
+size_flags_horizontal = 3
+text = "Debug Panels"
+horizontal_alignment = 2
+
+[node name="DebugValue" type="Label" parent="OuterMarginContainer/ControlsMenu/DebugHBoxContainer"]
+offset_left = 805.0
+offset_top = 53.0
+offset_right = 1560.0
+offset_bottom = 79.0
+size_flags_horizontal = 3
+text = "F1, F2, F3"
+
+[node name="BackButton" type="Button" parent="OuterMarginContainer/ControlsMenu"]
+offset_top = 908.0
+offset_right = 1560.0
+offset_bottom = 1040.0
+size_flags_vertical = 3
+text = "Back"

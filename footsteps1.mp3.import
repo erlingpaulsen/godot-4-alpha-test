@@ -1,0 +1,16 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://di454gpddv0d5"
+path="res://.godot/imported/footsteps1.mp3-d151be73fcffe5b9e93b6a76d34383a3.mp3str"
+
+[deps]
+
+source_file="res://footsteps1.mp3"
+dest_files=["res://.godot/imported/footsteps1.mp3-d151be73fcffe5b9e93b6a76d34383a3.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0

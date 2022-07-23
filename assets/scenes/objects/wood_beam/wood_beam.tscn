@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://c3wagnh5ifiay"]
+
+[ext_resource type="Script" path="res://assets/scenes/objects/wood_beam/wood_beam.gd" id="1_j6ib0"]
+[ext_resource type="Material" uid="uid://cg0xs1b62cq4m" path="res://assets/materials/wood_beam/woodbeam1.tres" id="2_1kbpi"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tl7oi"]
+size = Vector3(4, 0.2, 0.2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jaqpl"]
+size = Vector3(4, 0.2, 0.2)
+subdivide_width = 64
+subdivide_height = 64
+subdivide_depth = 64
+
+[sub_resource type="BoxMesh" id="BoxMesh_gvta4"]
+size = Vector3(4, 0.2, 0.2)
+subdivide_width = 16
+subdivide_height = 16
+subdivide_depth = 16
+
+[node name="WoodBeam" type="StaticBody3D" node_paths=PackedStringArray("mesh_LOD1", "mesh_LOD2")]
+script = ExtResource("1_j6ib0")
+mesh_LOD1 = NodePath("Meshes/Mesh_LOD1")
+mesh_LOD2 = NodePath("Meshes/Mesh_LOD2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_tl7oi")
+
+[node name="Meshes" type="Node3D" parent="."]
+
+[node name="Mesh_LOD1" type="MeshInstance3D" parent="Meshes"]
+material_override = ExtResource("2_1kbpi")
+visibility_range_end = 4.0
+mesh = SubResource("BoxMesh_jaqpl")
+skeleton = NodePath("../..")
+
+[node name="Mesh_LOD2" type="MeshInstance3D" parent="Meshes"]
+material_override = ExtResource("2_1kbpi")
+cast_shadow = 2
+visibility_range_begin = 4.0
+visibility_range_end = 20.0
+mesh = SubResource("BoxMesh_gvta4")
+skeleton = NodePath("../..")

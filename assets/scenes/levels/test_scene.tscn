@@ -1,0 +1,55 @@
+[gd_scene load_steps=9 format=3 uid="uid://7thfyam846f"]
+
+[ext_resource type="Script" path="res://assets/scenes/levels/environment_editor.gd" id="2_5i1j2"]
+[ext_resource type="Environment" uid="uid://byp5scp3kxapt" path="res://assets/materials/environments/environment1.tres" id="2_swjin"]
+[ext_resource type="PackedScene" uid="uid://ceg8nimtgqvac" path="res://assets/scenes/tiles/tile_cobblestone_thick.tscn" id="3_y2m1q"]
+[ext_resource type="PackedScene" uid="uid://di05dan0patm0" path="res://assets/scenes/characters/player/player.tscn" id="4_g8gdd"]
+[ext_resource type="PackedScene" uid="uid://b3g8vel5hctgm" path="res://assets/scenes/ui/crosshair.tscn" id="5_4qaxf"]
+[ext_resource type="PackedScene" uid="uid://c0es026gdnih8" path="res://assets/scenes/ui/debug_overlay.tscn" id="6_vhy2e"]
+[ext_resource type="PackedScene" path="res://assets/scenes/ui/main_menu.tscn" id="7_ohy3i"]
+[ext_resource type="PackedScene" uid="uid://c3wagnh5ifiay" path="res://assets/scenes/objects/wood_beam/wood_beam.tscn" id="8_iyyin"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("2_swjin")
+script = ExtResource("2_5i1j2")
+
+[node name="Player" parent="." instance=ExtResource("4_g8gdd")]
+transform = Transform3D(0.454084, 0, -0.89096, 0, 1, 0, 0.89096, 0, 0.454084, 1.42623, 0, -1.40236)
+
+[node name="Tiles" type="Node3D" parent="."]
+
+[node name="FloorTile" parent="Tiles" instance=ExtResource("3_y2m1q")]
+
+[node name="RoofTile" parent="Tiles" instance=ExtResource("3_y2m1q")]
+transform = Transform3D(-1, 1.50996e-07, 0, -1.50996e-07, -1, 0, 0, 0, 1, 0, 4, 0)
+
+[node name="FrontTile" parent="Tiles" instance=ExtResource("3_y2m1q")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -2, 2, 0)
+
+[node name="BackTile" parent="Tiles" instance=ExtResource("3_y2m1q")]
+transform = Transform3D(4.37114e-08, -1, -1.50996e-07, -1, -4.37114e-08, -2.5411e-21, -6.60023e-15, 1.50996e-07, -1, 2, 2, 0)
+
+[node name="LeftTile" parent="Tiles" instance=ExtResource("3_y2m1q")]
+transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 3.59989e-21, 4.37114e-08, -1, -4.37114e-08, 0, 2, 2)
+
+[node name="RightTile" parent="Tiles" instance=ExtResource("3_y2m1q")]
+transform = Transform3D(1.91069e-15, -4.37114e-08, -1, -1, -4.37114e-08, -3.59989e-21, -4.37114e-08, 1, -4.37114e-08, 0, 2, -2)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.998483, -5.57946e-09, -0.0550547, 0.0321759, 0.811441, 0.583547, 0.0446737, -0.584434, 0.810211, 0, 0, 0)
+visible = false
+
+[node name="WoodBeam" parent="." instance=ExtResource("8_iyyin")]
+transform = Transform3D(-0.00493922, 0.999988, 0, -0.999988, -0.00493922, 0, 0, 0, 1, 0.355137, 2.05179, -1.67932)
+
+[node name="UI" type="Control" parent="."]
+offset_right = 2560.0
+offset_bottom = 1440.0
+
+[node name="Crosshair" parent="UI" instance=ExtResource("5_4qaxf")]
+
+[node name="DebugOverlay" parent="UI" instance=ExtResource("6_vhy2e")]
+
+[node name="Menu" parent="UI" instance=ExtResource("7_ohy3i")]

@@ -1,0 +1,72 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://assets/scenes/tiles/tile.gd" id="1_h8mhj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ipput"]
+size = Vector3(4, 0, 4)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_s4l58"]
+resource_local_to_scene = true
+size = Vector2(4, 4)
+subdivide_width = 256
+subdivide_depth = 256
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ks853"]
+resource_local_to_scene = true
+size = Vector2(4, 4)
+subdivide_width = 128
+subdivide_depth = 128
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_bqqg2"]
+resource_local_to_scene = true
+size = Vector2(4, 4)
+subdivide_width = 64
+subdivide_depth = 64
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_2j2gx"]
+resource_local_to_scene = true
+size = Vector2(4, 4)
+subdivide_width = 16
+subdivide_depth = 16
+
+[node name="Tile" type="StaticBody3D"]
+script = ExtResource("1_h8mhj")
+LOD_visibility_threshold_1 = 4
+LOD_visibility_threshold_2 = 8
+LOD_visibility_threshold_3 = 12
+LOD_visibility_end = 40
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_ipput")
+
+[node name="TileMeshes" type="Node3D" parent="."]
+
+[node name="Mesh_LOD1" type="MeshInstance3D" parent="TileMeshes"]
+cast_shadow = 2
+lod_bias = 0.5
+visibility_range_end = 4.0
+mesh = SubResource("PlaneMesh_s4l58")
+skeleton = NodePath("../..")
+
+[node name="Mesh_LOD2" type="MeshInstance3D" parent="TileMeshes"]
+cast_shadow = 2
+lod_bias = 0.5
+visibility_range_begin = 4.0
+visibility_range_end = 8.0
+mesh = SubResource("PlaneMesh_ks853")
+skeleton = NodePath("../..")
+
+[node name="Mesh_LOD3" type="MeshInstance3D" parent="TileMeshes"]
+cast_shadow = 2
+visibility_range_begin = 8.0
+visibility_range_end = 12.0
+mesh = SubResource("PlaneMesh_bqqg2")
+skeleton = NodePath("../..")
+
+[node name="Mesh_LOD4" type="MeshInstance3D" parent="TileMeshes"]
+cast_shadow = 2
+visibility_range_begin = 12.0
+visibility_range_end = 40.0
+mesh = SubResource("PlaneMesh_2j2gx")
+skeleton = NodePath("../Mesh_LOD3")

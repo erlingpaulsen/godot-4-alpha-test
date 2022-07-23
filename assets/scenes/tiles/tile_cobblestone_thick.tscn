@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://ceg8nimtgqvac"]
+
+[ext_resource type="PackedScene" uid="uid://clj7bto1ukeor" path="res://assets/scenes/tiles/tile_thick.tscn" id="1_elkt0"]
+[ext_resource type="Material" uid="uid://bcyicpdoq5ts6" path="res://assets/materials/tiles/cobblestone1.tres" id="2_mdcyg"]
+
+[node name="TileCobblestone" instance=ExtResource("1_elkt0")]
+shader_material = ExtResource("2_mdcyg")
+
+[node name="Mesh_LOD1" parent="TileMeshes" index="0"]
+material_override = ExtResource("2_mdcyg")
+
+[node name="Mesh_LOD2" parent="TileMeshes" index="1"]
+material_override = ExtResource("2_mdcyg")
+
+[node name="Mesh_LOD3" parent="TileMeshes" index="2"]
+material_override = ExtResource("2_mdcyg")
+
+[node name="Mesh_LOD4" parent="TileMeshes" index="3"]
+material_override = ExtResource("2_mdcyg")

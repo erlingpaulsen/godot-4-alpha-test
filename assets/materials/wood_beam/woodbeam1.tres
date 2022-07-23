@@ -1,0 +1,59 @@
+[gd_resource type="ShaderMaterial" load_steps=8 format=3 uid="uid://cg0xs1b62cq4m"]
+
+[ext_resource type="Shader" path="res://assets/shaders/woodbeam.gdshader" id="1_0ot5u"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_c5lny"]
+noise_type = 3
+frequency = 0.02
+fractal_octaves = 2
+fractal_lacunarity = 4.0
+fractal_gain = 1.0
+
+[sub_resource type="NoiseTexture" id="NoiseTexture_v34ku"]
+width = 256
+height = 128
+noise = SubResource("FastNoiseLite_c5lny")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_tte8h"]
+fractal_type = 3
+fractal_lacunarity = 3.0
+fractal_ping_pong_strength = 3.0
+domain_warp_enabled = true
+domain_warp_amplitude = 20.0
+domain_warp_fractal_octaves = 2
+
+[sub_resource type="NoiseTexture" id="NoiseTexture_1lg32"]
+width = 1024
+invert = true
+seamless = true
+noise = SubResource("FastNoiseLite_tte8h")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_okg3b"]
+fractal_type = 3
+fractal_lacunarity = 3.0
+fractal_ping_pong_strength = 3.0
+domain_warp_enabled = true
+domain_warp_fractal_octaves = 3
+
+[sub_resource type="NoiseTexture" id="NoiseTexture_e7cyn"]
+width = 1024
+invert = true
+seamless = true
+as_normal_map = true
+bump_strength = 1.0
+noise = SubResource("FastNoiseLite_okg3b")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_0ot5u")
+shader_param/beam_length = 4.0
+shader_param/beam_thickness = null
+shader_param/brightness = 0.88
+shader_param/color_mix_curve = 1.95
+shader_param/height_noise = SubResource("NoiseTexture_v34ku")
+shader_param/height_offset = 0.0
+shader_param/height_scale = 0.012
+shader_param/noise = SubResource("NoiseTexture_1lg32")
+shader_param/normalmap = SubResource("NoiseTexture_e7cyn")
+shader_param/wood_color = Color(0.211765, 0.152941, 0.113725, 1)
+shader_param/wood_color_2 = Color(0.352941, 0.266667, 0.207843, 1)

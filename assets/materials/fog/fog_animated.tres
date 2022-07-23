@@ -1,0 +1,15 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bnsjxxv11gxof"]
+
+[ext_resource type="Shader" path="res://assets/shaders/fog_animated_simplex.gdshader" id="1_di50j"]
+
+[resource]
+shader = ExtResource("1_di50j")
+shader_param/density = 0.3
+shader_param/albedo = Color(0.764706, 0.764706, 0.764706, 1)
+shader_param/emission = Color(0.176471, 0.176471, 0.176471, 1)
+shader_param/height_falloff = 0.4
+shader_param/edge_fade = 0.05
+shader_param/scale_x = 30.0
+shader_param/scale_y = 10.0
+shader_param/scale_z = 30.0
+shader_param/time_factor = 0.5

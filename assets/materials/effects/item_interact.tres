@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://be0dpcoceikqg"]
+
+[ext_resource type="Material" uid="uid://b6n4alws48y0d" path="res://assets/materials/effects/item_shine.tres" id="1_pu1fa"]
+[ext_resource type="Shader" path="res://assets/shaders/item_highlight.gdshader" id="2_v8clj"]
+
+[resource]
+render_priority = 0
+next_pass = ExtResource("1_pu1fa")
+shader = ExtResource("2_v8clj")
+shader_param/emission_intensity = 0.25
+shader_param/highlight_color = Color(1, 0.89, 0, 0.1)

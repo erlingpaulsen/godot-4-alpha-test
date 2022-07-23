@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cfof6r4hob835"]
+
+[ext_resource type="Shader" path="res://assets/shaders/item_outline.gdshader" id="1_atek0"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_atek0")
+shader_param/outline_color = Color(1, 0.956863, 0.823529, 0.784314)
+shader_param/outline_width = 1.0

@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://o04jxnojsoin"]
+
+[ext_resource type="Texture2D" uid="uid://bie38hownx78" path="res://assets/textures/hands/HAND_C.jpg" id="1_oquhj"]
+[ext_resource type="Texture2D" uid="uid://g4mss8e3luld" path="res://assets/textures/hands/HAND_N .jpg" id="2_b47pd"]
+
+[resource]
+resource_name = "Material.004"
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.917489, 0.826849, 0.768447, 1)
+albedo_texture = ExtResource("1_oquhj")
+roughness = 0.5
+normal_enabled = true
+normal_texture = ExtResource("2_b47pd")

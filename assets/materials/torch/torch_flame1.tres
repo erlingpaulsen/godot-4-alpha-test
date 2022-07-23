@@ -1,0 +1,34 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://bwhwd2dnycb3e"]
+
+[ext_resource type="Shader" path="res://assets/shaders/fire_3d.gdshader" id="1_jk1uj"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_a1jk4"]
+noise_type = 0
+frequency = 0.012
+fractal_type = 2
+fractal_octaves = 1
+fractal_lacunarity = 1.5
+fractal_ping_pong_strength = 5.0
+cellular_distance_function = 1
+cellular_jitter = 0.7
+cellular_return_type = 6
+domain_warp_enabled = true
+domain_warp_type = 2
+domain_warp_amplitude = 20.0
+domain_warp_frequency = 0.005
+domain_warp_fractal_lacunarity = 2.1
+domain_warp_fractal_gain = 1.0
+
+[sub_resource type="NoiseTexture" id="NoiseTexture_mjre6"]
+width = 150
+height = 150
+seamless = true
+noise = SubResource("FastNoiseLite_a1jk4")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_jk1uj")
+shader_param/edge_softness = 1.2
+shader_param/emission_intensity = 8.0
+shader_param/noise_texture = SubResource("NoiseTexture_mjre6")
+shader_param/texture_scale = Vector2(0.7, 0.7)
